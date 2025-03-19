@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>AI-Powered Resume Builder</h2>
+
+        <!-- User Type Selection -->
+        <label for="userType">Are you a Fresher or Experienced?</label>
+        <select id="userType" onchange="toggleUserFields()">
+            <option value="fresher">Fresher</option>
+            <option value="experienced">Experienced</option>
+        </select>
+
+        <!-- Basic Info -->
+        <div class="form-container">
+            <input type="text" id="name" placeholder="Full Name">
+            <input type="email" id="email" placeholder="Email" onblur="validateEmail()">
+            <input type="tel" id="phone" placeholder="Phone Number" class="phone-input">
+            <textarea id="summary" placeholder="Write a brief summary..."></textarea>
+        </div>
+
+        <!-- Fresher Fields -->
+        <div id="fresherFields">
+            <input type="text" id="cgpa" placeholder="CGPA">
+            <textarea id="projects" placeholder="Projects and Internships"></textarea>
+        </div>
+
+        <!-- Experienced Fields -->
+        <div id="experiencedFields" style="display:none;">
+            <textarea id="company" placeholder="Previous Company Details"></textarea>
+            <input type="number" id="years" placeholder="Years of Experience">
+            <textarea id="expProjects" placeholder="Professional Projects"></textarea>
+        </div>
+
+        <!-- Template Selection -->
+        <label for="template">Select Resume Template:</label>
+        <select id="template">
+            <option value="template1">Professional</option>
+            <option value="template2">Creative</option>
+            <option value="template3">Elegant</option>
+        </select>
+
+        <button onclick="generateResume()">Preview Resume</button>
+        <button onclick="downloadPDF()">Download as PDF</button>
+    </div>
+
+    <!-- Resume Preview -->
+    <div id="resume-preview" class="resume-container"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
